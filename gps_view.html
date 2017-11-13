@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+	  <link rel="stylesheet" type="text/css" href="assets/css/main.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.0/sweetalert.min.css">
+    <title>Gas</title>
+  </head>
+  <body>
+
+    <div id="main">
+      <h1>TAKAO -Tourist Information-</h1>
+      <div id="result"></div>
+      <h2>-Map preview-</h2>
+      <div id="map-wrapper">
+      <div id="map-canvas"></div>
+      </div>
+
+  	  <div id="gas_test">
+  		  <h2>取得情報</h2>
+        <span id="gas_result">取得結果</span>
+        <h2>案内情報</h2>
+        <span id="view"></span>
+        <h2>取得サイト</h2>
+        <span id="gas_url"></span>
+        <h2>比較画像</h2>
+        <span id="gas_img"></span>
+  	  </div>
+
+      <div id="Acceleration">
+        <span id="x_test"></span>
+        <span id="y_test"></span>
+        <span id="z_test"></span>
+      </div>
+    </div>
+    <div id="hoge"></div>
+    <div id="push"></div>
+
+    <div id="sub">
+      <p id="caution">歩きスマホダメゼッタイ!</p>
+      <span id='btn'><input type="button" value="閉じる" onclick=document.getElementById('sub').style.visibility="hidden"></span>
+    </div>
+
+    <!-- javascript一覧 -->
+    <script async defer src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyD0fUYnLo6ZTfObzAMBOBmaZRKZCriR-a4&amp;libraries=geometry"></script>
+	  <script src="assets/js/gps_meter.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/push.js/0.0.13/push.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.0/sweetalert.min.js"></script>
+  </body>
+</html>
