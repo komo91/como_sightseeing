@@ -18,6 +18,11 @@ div {
   z-index: 0;
 }
 
+#main_bar {
+  background: "aseets/img/top1.jpg";
+  
+}
+
 #sub {
   position: absolute;
   top: 0px;
