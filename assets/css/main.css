@@ -7,7 +7,7 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background-color: #ccc;
+  background-color: #aaa;
 }
 
 div {
@@ -20,24 +20,14 @@ h2 {
   text-align: center;
 }
 
-.message {
-  text-align: center;
-  font-size: 30px;
+dl {}
+
+dt,
+dd {
+  font-size: 18pt;
 }
 
-.title_bar {
-  margin: 0 auto;
-  padding: 20px;
-  width: 100vw;
-  background-color: #aaa;
-  text-align: center;
-  font-size: 40px;
-}
-
-#main {
-  z-index: 0;
-}
-
+/*----- index ------*/
 #main_bar {
   position: none;
   top: 0;
@@ -68,67 +58,26 @@ h2 {
   text-align: center;
 }
 
-.title {
-  color: #ccc;
+/*----- gps_meter ------*/
+#main {
+  z-index: 0;
 }
 
-#sub {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 120%;
-  background-color: #111;
-  opacity: 0.8;
-  visibility: hidden;
-  z-index: 1;
-}
-
-#alert {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: 120%;
-  background-color: #111;
-  opacity: 0.8;
-  visibility: hidden;
-  z-index: 2;
-}
-
-p#caution {
-  margin:  0 auto;
-  padding: 200px 200px;
-  font-size: 38pt;
-  color: #faa;
+.title_bar {
+  margin: 0 auto;
+  padding: 20px;
+  width: 100vw;
+  background-color: #aaa;
   text-align: center;
+  font-size: 40px;
 }
 
-span#btn {
-  font-size: 30pt;
-  font-weight: bold;
-  padding: 50px 150px;
-  margin: 500% 0;
-  color: #fff;
-  border-style: none;
+.message {
   text-align: center;
+  font-size: 30px;
 }
 
-#result {
-
-}
-
-dl {
-
-}
-
-dt,
-dd {
-  font-size: 18pt;
-}
-
-
-/* button */
+/*----- button -----*/
 #hoge0,
 #hoge1 {
   display: inline-block;
@@ -154,9 +103,12 @@ dd {
 }
 
 
-/* Map */
+/*------ Map ------*/
 #map-view {
-  background: #bbb;
+  margin: 0 auto;
+  padding: 20px;
+  width: 100vw;
+  background: #ccc;
 }
 
 #map-wrapper {
@@ -175,16 +127,31 @@ dd {
   overflow: hidden;
 }
 
+/*----- sub -----*/
+#sub {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  background-color: #111;
+  opacity: 0.8;
+  visibility: hidden;
+  z-index: 1;
+}
+
+p#caution {
+  margin:  0 auto;
+  padding: 200px 200px;
+  font-size: 38pt;
+  color: #faa;
+  text-align: center;
+}
+
 /* iPhone5基準 */
-@media screen and (max-width:320px) {
+@media screen and (min-width: 320px){
   #main_bar {
-    top: 0;
-    left: 0;
-    max-width: 80%;
-    min-width: 40%;
-    max-height: 80%;
-    min-height: 40%;
-    padding: 10px;
+
   }
 
   #map-wrapper {
@@ -199,10 +166,18 @@ dd {
     font-size: 8px;
   }
 
+  .message {
+    font-size: 12px;
+  }
+
+  .title_bar {
+    font-size: 14px;
+  }
+
 }
 
 /* Android基準*/
-@media screen and (max-width:360px) {
+@media screen and (min-width: 360px) {
   #main_bar {
 
   }
@@ -219,10 +194,17 @@ dd {
     font-size: 12px;
   }
 
+  .message {
+    font-size: 20px;
+  }
+
+  .title_bar {
+    font-size: 20px;
+  }
 }
 
 /* iPad基準*/
-@media screen and (max-width:767px) {
+@media screen and (min-width: 767px) {
   #main_bar {
 
   }

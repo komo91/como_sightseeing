@@ -141,8 +141,8 @@ function inputMarker() {
     };
 
     CheckPoint[i] = false;  //未到達判定
-    var Cir = new google.maps.Circle(CirclePoint[i]); //範囲円表示
-    syncerWatchPosition.map.fitBounds(Cir.getBounds()); //地図ビューポート修正
+    //var Cir = new google.maps.Circle(CirclePoint[i]); //範囲円表示
+    //syncerWatchPosition.map.fitBounds(Cir.getBounds()); //地図ビューポート修正
   }
 }
 
