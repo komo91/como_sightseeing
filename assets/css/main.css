@@ -1,5 +1,6 @@
+
 html {
-  height: 100%;
+  height: 100vw;
 }
 
 body {
@@ -10,8 +11,27 @@ body {
 }
 
 div {
-  margin: 2px;
-  padding: 2px;
+}
+
+h1,
+h2 {
+  margin: 0 auto;
+  padding: 0 auto;
+  text-align: center;
+}
+
+.message {
+  text-align: center;
+  font-size: 30px;
+}
+
+.title_bar {
+  margin: 0 auto;
+  padding: 20px;
+  width: 100vw;
+  background-color: #aaa;
+  text-align: center;
+  font-size: 40px;
 }
 
 #main {
@@ -19,14 +39,43 @@ div {
 }
 
 #main_bar {
-  background: "aseets/img/top1.jpg";
-  
+  position: none;
+  top: 0;
+  left: 0;
+  margin: 0 auto;
+  padding: 0 auto;
+  display: block;
+  opacity: 0.7;
+  max-width: 80%;
+  max-height: 120%;
+  background: #ccc url(../img/top2.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-bottom: 90%;
+  z-index: -1;
+}
+
+.main_text {
+  position: relative;
+  top: 0;
+  left: 0;
+  margin: 0 auto;
+  padding: 0 auto;
+  vertical-align: middle;
+  font-size: 26px;
+  opacity: 1;
+  text-align: center;
+}
+
+.title {
+  color: #ccc;
 }
 
 #sub {
   position: absolute;
-  top: 0px;
-  left: 0px;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 120%;
   background-color: #111;
@@ -44,7 +93,7 @@ div {
   background-color: #111;
   opacity: 0.8;
   visibility: hidden;
-  z-index: 1;
+  z-index: 2;
 }
 
 p#caution {
@@ -78,6 +127,38 @@ dd {
   font-size: 18pt;
 }
 
+
+/* button */
+#hoge0,
+#hoge1 {
+  display: inline-block;
+  text-decoration: none;
+  color: #668ad8;
+  margin: 5px;
+  padding: 0 auto;
+  width: 120px;
+  height: 120px;
+  line-height: 120px;
+  border-radius: 50%;
+  border: solid 2px #668ad8;
+  text-align: center;
+  vertical-align: middle;
+  overflow: hidden;
+  font-weight: bold;
+  transition: .4s;
+}
+
+#hoge0:hover,
+#hoge1:hover {
+  background: #b3e1ff;
+}
+
+
+/* Map */
+#map-view {
+  background: #bbb;
+}
+
 #map-wrapper {
   max-width: 80%;
   min-width: 40%;
@@ -92,4 +173,70 @@ dd {
   padding-bottom: 80%;
   height: 0;
   overflow: hidden;
+}
+
+/* iPhone5基準 */
+@media screen and (max-width:320px) {
+  #main_bar {
+    top: 0;
+    left: 0;
+    max-width: 80%;
+    min-width: 40%;
+    max-height: 80%;
+    min-height: 40%;
+    padding: 10px;
+  }
+
+  #map-wrapper {
+
+  }
+
+  #map-canvas {
+
+  }
+
+  .main_text {
+    font-size: 8px;
+  }
+
+}
+
+/* Android基準*/
+@media screen and (max-width:360px) {
+  #main_bar {
+
+  }
+
+  #map-wrapper {
+
+  }
+
+  #map-canvas {
+
+  }
+
+  .main_text {
+    font-size: 12px;
+  }
+
+}
+
+/* iPad基準*/
+@media screen and (max-width:767px) {
+  #main_bar {
+
+  }
+
+  #map-wrapper {
+
+  }
+
+  #map-canvas {
+
+  }
+
+  .main_text {
+    font-size: 16px;
+  }
+
 }

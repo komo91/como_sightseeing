@@ -7,6 +7,9 @@ var lat, //緯度,
     CirclePoint = [], //位置範囲設定
     CheckPoint = [];  //到達判定
 
+var btn = [];
+var v_text = [];
+
 //加速度判定
 var GRAVITY_MIN = 9.8;
 var GRAVITY_MAX = 12.0;
@@ -32,6 +35,8 @@ var CheckData ={
 //加速度処理
 window.addEventListener('devicemotion',onDeviceMotion);
 
+document.getElementById('map-canvas').innerHTML = '<div class="message">NowLoading...</div>';
+
 //GeoLocationAPI対応
 if(navigator.geolocation) {
   //現在地測定成功の場合
@@ -52,7 +57,7 @@ if(navigator.geolocation) {
     syncerWatchPosition.lastTime = nowTime;
 
     //divにて結果表示
-    document.getElementById('result').innerHTML = '<dl><dt>緯度</dt><dd>' + lat + '</dd><dt>経度</dt><dd>' + lng + '</dd><dt>緯度、経度の精度</dt><dd>' + accLatlng + '</dd><dt>実行回数</dt><dd>' + syncerWatchPosition.count + '</dd></dl>';
+    //document.getElementById('result').innerHTML = '<dl><dt>緯度</dt><dd>' + lat + '</dd><dt>経度</dt><dd>' + lng + '</dd><dt>緯度、経度の精度</dt><dd>' + accLatlng + '</dd><dt>実行回数</dt><dd>' + syncerWatchPosition.count + '</dd></dl>';
 
     //現在地宣言
     myPosition = new google.maps.LatLng(
@@ -60,7 +65,7 @@ if(navigator.geolocation) {
         lat: lat,
         lng: lng
       });
-      LogPost(myPosition);
+      //LogPost(myPosition);
 
     if(syncerWatchPosition.map == null) { //新規Map作成
       syncerWatchPosition.map = new google.maps.Map(document.getElementById('map-canvas'), {
@@ -77,8 +82,10 @@ if(navigator.geolocation) {
       warning_view('sub');  //警告表示描画
     } else {
       syncerWatchPosition.map.setCenter(myPosition);  //地図中心変更
-      LogPost(myPosition);
+      //LogPost(myPosition);
     }
+
+
   }
 
   //現在地測定失敗の場合
@@ -95,7 +102,7 @@ if(navigator.geolocation) {
 
     var errorMessage = "[エラー番号:" + errorNo + "]\n" + errorInfo[errorNo];
 
-    document.getElementById("result").innerHTML = errorMessage;
+    document.getElementById("map-canvas").innerHTML = '<div class="message">' + errorMessage + '</div>';
 
   }
   //オプション
@@ -146,8 +153,7 @@ function decision() {
     var distance = google.maps.geometry.spherical.computeDistanceBetween(myPosition,marker[j].position);
     if(CirclePoint[j].radius > distance && CheckPoint[j]==false) {  //範囲円に現在地点に入った かつ 一度も到達してない場合
       GasRequest(spotData[j][0]); //スポットごとの外部サイトアクセス
-      LogPost(spotData[j][0]);  //スポット到達ログ送信
-
+      //LogPost(spotData[j][0]);  //スポット到達ログ送信
       CheckPoint[j] = true; //一度到達した判定
 
     }
@@ -196,28 +202,53 @@ function receiveJson(json) {
     if(json.key==spotData[i][0]) {
       Audio();  //通知音
       spot_alert(spotData[i][4],json.response[0]);  //アラート表示
-      document.getElementById('gas_result').innerHTML = json.response[0]; //取得内容書き出し
-      //URL反映
-      var a = document.createElement('a');
-      a.href = json.response[1];
-      var str = document.createTextNode('URL');
-      a.appendChild(str);
-      document.getElementById('gas_url').appendChild(a);
-      //画像反映
-      if(json.response[2]) {
-        var b = document.createElement('img');
-        b.src = json.response[2];
-        document.getElementById('gas_img').appendChild(b);
-      }
+      reflect_info(json,i);
     }
   }
   if(!json.response){
-    document.getElementById('gas_result').innerHTML = json.error;
+    //document.getElementById('gas_result').innerHTML = json.error;
   }
 }
 
+function reflect_info(json,i) {
+  //URL反映
+  var a = document.createElement('a');
+  a.href = spotData[i][5];
+  a.target = "_blank";
+  var str = document.createTextNode('関連サイトへ');
+  a.appendChild(str);
+  document.getElementById('gas_url').appendChild(a);
+
+  //button
+  for(var i = 0; i < 2; i++) {
+    btn[i] = document.createElement('button');
+    btn[i].textContent = json.response[1][i];
+    btn[i].id = "hoge" + i;
+    btn[i].addEventListener('click',hoge,false);
+    v_text[i] = json.response[2][i];
+    document.getElementById("button").appendChild(btn[i]);
+  }
+
+  //画像反映
+  if(json.response[3]) {
+    var b = document.createElement('img');
+    b.src = json.response[3];
+    document.getElementById('gas_img').appendChild(b);
+  }
+}
+
+function hoge() {
+  Speech(v_text);
+}
+
+
+
+
+
 /* ----- Log記録 ----- */
 
+
+/*
 //GASに指定値をpost
 function LogPost(text) {
   var script = document.createElement('script');
@@ -267,6 +298,8 @@ function browserCheck() {
     return 'other';
   }
 }
+
+*/
 
 //加速度計算
 function obj2NumberFix(obj,fix_deg) {
@@ -358,7 +391,7 @@ function onDeviceMotion(e) {
     //document.getElementById('sub').style.visibility = "visible";
     if(acc < GRAVITY_MIN) {
       step++;
-      view_hoge();
+      walk_ref();
     }
     isStep = false;
   } else {
@@ -366,18 +399,18 @@ function onDeviceMotion(e) {
       isStep = true;
     }
   }
-  document.getElementById('hoge').innerHTML = step + "歩";
+  //document.getElementById('hoge').innerHTML = step + "歩";
 }
 
   //歩行状態ではないかつ歩行停止1秒後
-function view_hoge() {
+function walk_ref() {
   document.getElementById('sub').style.visibility = "visible";
   timerId = setTimeout(1000);
 }
 
 function exhoge() {
   if(isStep) {
-    view_hoge();
+    walk_ref();
   } else {
     document.getElementById('sub').style.visibility = "hidden";
     clearTimeout(timerId);
