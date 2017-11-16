@@ -76,7 +76,11 @@ if(navigator.geolocation) {
       //新規マーカー作成
       syncerWatchPosition.marker = new google.maps.Marker({
         map: syncerWatchPosition.map,
-        position: myPosition
+        position: myPosition,
+        icon: {
+          url:'assets/img/myspot3.svg',
+          scaledSize: new google.maps.Size(40, 40)
+        }
       });
       GasRequest('CheckData');  //spot情報要求
       warning_view('sub');  //警告表示描画
