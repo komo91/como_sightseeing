@@ -215,11 +215,14 @@ function receiveJson(json) {
 }
 
 function reflect_info(json,i) {
+  document.getElementById('url_title').innerHTML = "取得情報";
+  document.getElementById('img_title').innerHTML = "取得画像";
   //URL反映
   var a = document.createElement('a');
   a.href = spotData[i][5];
+  a.className = "url_button";
   a.target = "_blank";
-  var str = document.createTextNode('関連サイトへ');
+  var str = document.createTextNode(spotData[i][4] + 'の関連サイトへ');
   a.appendChild(str);
   document.getElementById('gas_url').appendChild(a);
 
