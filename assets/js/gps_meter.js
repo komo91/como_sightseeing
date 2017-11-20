@@ -36,6 +36,9 @@ var CheckData ={
 window.addEventListener('devicemotion',onDeviceMotion);
 
 document.getElementById('map-canvas').innerHTML = '<div class="message">NowLoading...</div>';
+var result = document.getElementById('result');
+result.style.visibility = "hidden";
+
 
 //GeoLocationAPI対応
 if(navigator.geolocation) {
@@ -55,9 +58,6 @@ if(navigator.geolocation) {
       return false;
     }
     syncerWatchPosition.lastTime = nowTime;
-
-    //divにて結果表示
-    //document.getElementById('result').innerHTML = '<dl><dt>緯度</dt><dd>' + lat + '</dd><dt>経度</dt><dd>' + lng + '</dd><dt>緯度、経度の精度</dt><dd>' + accLatlng + '</dd><dt>実行回数</dt><dd>' + syncerWatchPosition.count + '</dd></dl>';
 
     //現在地宣言
     myPosition = new google.maps.LatLng(
@@ -215,8 +215,8 @@ function receiveJson(json) {
 }
 
 function reflect_info(json,i) {
-  document.getElementById('url_title').innerHTML = "取得情報";
-  document.getElementById('img_title').innerHTML = "取得画像";
+  result.style.visibility = "visible";
+
   //URL反映
   var a = document.createElement('a');
   a.href = spotData[i][5];
@@ -226,14 +226,11 @@ function reflect_info(json,i) {
   a.appendChild(str);
   document.getElementById('gas_url').appendChild(a);
 
-  //button
   for(var i = 0; i < 2; i++) {
-    btn[i] = document.createElement('button');
-    btn[i].textContent = json.response[1][i];
+    btn[i] = document.createElement('div');
     btn[i].id = "hoge" + i;
-    btn[i].addEventListener('click',hoge,false);
-    v_text[i] = json.response[2][i];
-    document.getElementById("button").appendChild(btn[i]);
+    btn[i].textContent = json.response[2][i];
+    document.getElementById('hoge').appendChild(btn[i]);
   }
 
   //画像反映
@@ -243,70 +240,6 @@ function reflect_info(json,i) {
     document.getElementById('gas_img').appendChild(b);
   }
 }
-
-function hoge() {
-  Speech(v_text);
-}
-
-
-
-
-
-/* ----- Log記録 ----- */
-
-
-/*
-//GASに指定値をpost
-function LogPost(text) {
-  var script = document.createElement('script');
-  var base = 'https://script.google.com/macros/s/AKfycbyABjS6CnXqSuqoYTFga7_mLjI2Z_rMjseJZ_RS3nXVy90u920/exec';
-  var user = navicheck();
-  var browser = browserCheck();
-  script.src = base + '?callback=return_hoge&log=' + encodeURI(text) + '&user=' + user + '&browser=' + browser;
-  document.body.appendChild(script);
-}
-
-function return_hoge(json) {}
-
-//端末情報
-function navicheck() {
-  var ua = window.navigator.userAgent.toLowerCase();
-  //console.log(ua);
-  if(ua.indexOf('iphone') != -1) {
-    return 'iPhone';
-  } else if(ua.indexOf('ipad') != -1) {
-    return 'iPad';
-  } else if(ua.indexOf('android') != -1) {
-    if(ua.indexOf('moblie') != -1) {
-      return 'android_smart';
-    } else {
-      return 'android_tab';
-    }
-  }
-}
-
-//ブラウザ情報
-function browserCheck() {
-  var ua = window.navigator.userAgent.toLowerCase();
-
-  if(ua.indexOf('msie') != -1 || ua.indexOf('trident') != -1) {
-    return 'IE';
-  } else if(ua.indexOf('edge') != -1) {
-    return 'Edge';
-  } else if(ua.indexOf('chrome') != -1) {
-    return 'chrome';
-  } else if(ua.indexOf('safari') != -1) {
-    return 'safari';
-  } else if(ua.indexOf('firefox') != -1) {
-    return 'Firefox';
-  } else if(ua.indexOf('opera') != -1) {
-    return 'Opera';
-  } else {
-    return 'other';
-  }
-}
-
-*/
 
 //加速度計算
 function obj2NumberFix(obj,fix_deg) {
