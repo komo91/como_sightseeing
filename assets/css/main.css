@@ -21,7 +21,7 @@ div {
 h1,
 h2 {
   margin: 0 auto;
-  padding: 0 auto;
+  padding: .5em;
   text-align: center;
   font-family: 'Lato', sans-serif;
   color: #ccc;
@@ -62,25 +62,27 @@ h2 {
 /*----- gps_meter ------*/
 #main_title {
   margin: 0 auto;
-  padding: 0;
+  padding: .5em 0;
   text-align: center;
-  background: rgba(111,111,111,0.5);
-  color: #ccc
+  background: rgba(111,111,111,0.7);
+  color: #ccc;
+}
+
+.title {
+  margin: 0 auto;
+  padding: .5em 0;
+  width: 100vw;
+  text-align: center;
+  font-size: 24pt;
+  font-family: 'Lato', sans-serif;
+  color: #ccc;
 }
 
 #result {
+  margin: 0 auto;
+  padding: .5em;
   text-align: center;
   background: rgba(204,204,204,0.5);
-}
-
-div.title {
-  margin: 0 auto;
-  padding: 20px;
-  width: 100vw;
-  text-align: center;
-  font-size: 40px;
-  font-family: 'Lato', sans-serif
-  color: #ccc;
 }
 
 .message {
@@ -100,15 +102,15 @@ div.title {
   background: #ccc;
 }
 
-span.result_title {
+h2#gas_q0,
+#gas_q1 {
   padding: .25em 0 .5em .75em;
   border-left: 6px solid #abc;
   border-bottom: 1px solid #abc;
   margin-right: auto;
 }
 
-#hoge0,
-#hoge1 {
+div.gas_text {
 
 }
 
@@ -116,21 +118,20 @@ span.result_title {
 /*------ Map ------*/
 #map-view {
   margin: 0 auto;
-  width: 100vw;
+  padding: 0;
   background: rgba(119,136,153, 0.5);
-
 }
 
 #map-div {
+  margin: 0 auto;
+  padding: .5em;
   background-color: #006400;
 }
 
 #map-wrapper {
-  max-width: 80%;
+  max-width: 90%;
   min-width: 40%;
-  margin: 5px auto;
-  padding: 2px;
-
+  margin: .5em auto;
 }
 
 
@@ -189,6 +190,10 @@ p#caution {
     font-size: 14px;
   }
 
+  p#caution {
+    font-size: 14px;
+  }
+
 }
 
 /* Android基準*/
@@ -205,6 +210,10 @@ p#caution {
 
   }
 
+  p#caution {
+
+  }
+
   .main_text {
     font-size: 12px;
   }
@@ -215,6 +224,10 @@ p#caution {
 
   .title {
     font-size: 20px;
+  }
+
+  p#caution {
+    font-size: 16px;
   }
 }
 
@@ -235,10 +248,8 @@ p#caution {
   .main_text {
     font-size: 16px;
   }
-}
 
-@media screen and (min-width: 778px) {
-  div.title {
-    font-size: 30px;
+  p#caution {
+    font-size: 18px;
   }
 }

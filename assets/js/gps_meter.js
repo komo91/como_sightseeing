@@ -7,7 +7,8 @@ var lat, //緯度,
     CirclePoint = [], //位置範囲設定
     CheckPoint = [];  //到達判定
 
-var btn = [];
+var ques = [];
+var text = [];
 var v_text = [];
 
 //加速度判定
@@ -226,11 +227,15 @@ function reflect_info(json,i) {
   a.appendChild(str);
   document.getElementById('gas_url').appendChild(a);
 
-  for(var i = 0; i < 2; i++) {
-    btn[i] = document.createElement('div');
-    btn[i].id = "hoge" + i;
-    btn[i].textContent = json.response[2][i];
-    document.getElementById('hoge').appendChild(btn[i]);
+  for(var i = 0; i < json.response[1].length; i++) {
+    ques[i] = document.createElement('h2');
+    text[i] = document.createElement('p');
+    ques[i].id = "gas_q" + i;
+    text[i].class = "gas_text";
+    ques[i].textContent = json.response[1][i];
+    text[i].textContent = json.response[2][i];
+    document.getElementById('text' + i).appendChild(ques[i]);
+    document.getElementById('gas_q' + i).parentNode.insertBefore(text[i],ques[i].nextSibling);
   }
 
   //画像反映
