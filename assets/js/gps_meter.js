@@ -356,5 +356,4 @@ function walk_ref() {
 function exhoge() {
     document.getElementById('sub').style.visibility = "hidden";
     clearTimeout(timerId);
-  }
 }
