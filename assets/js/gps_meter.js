@@ -354,9 +354,6 @@ function walk_ref() {
 }
 
 function exhoge() {
-  if(isStep) {
-    walk_ref();
-  } else {
     document.getElementById('sub').style.visibility = "hidden";
     clearTimeout(timerId);
   }

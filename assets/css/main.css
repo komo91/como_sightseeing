@@ -145,7 +145,7 @@ div.gas_text {
 
 /*----- sub -----*/
 #sub {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -158,7 +158,7 @@ div.gas_text {
 
 p#caution {
   margin:  0 auto;
-  padding: 200px 200px;
+  padding: .5em .5em;
   font-size: 38pt;
   color: #faa;
   text-align: center;
@@ -192,6 +192,7 @@ p#caution {
 
   p#caution {
     font-size: 14px;
+    padding: .25em .25em
   }
 
 }
@@ -228,6 +229,7 @@ p#caution {
 
   p#caution {
     font-size: 16px;
+    padding: .25em .25em;
   }
 }
 
@@ -251,5 +253,6 @@ p#caution {
 
   p#caution {
     font-size: 18px;
+    padding: .25em .25em;
   }
 }
