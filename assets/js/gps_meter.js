@@ -34,12 +34,13 @@ var CheckData ={
 };
 
 //加速度処理
-window.addEventListener('devicemotion',onDeviceMotion);
+//window.addEventListener('devicemotion',onDeviceMotion);
 
 document.getElementById('map-canvas').innerHTML = '<div class="message">NowLoading...</div>';
 var result = document.getElementById('result');
 result.style.visibility = "hidden";
 
+document.getElementById('sub').style.visibility = "visible";  //test
 
 //GeoLocationAPI対応
 if(navigator.geolocation) {
@@ -326,6 +327,7 @@ function Audio() {
   loader.loadBuffer();
 }
 
+/*
 //歩数測定・歩きスマホ判定
 function onDeviceMotion(e) {
   e.preventDefault();
@@ -357,3 +359,4 @@ function exhoge() {
     document.getElementById('sub').style.visibility = "hidden";
     clearTimeout(timerId);
 }
+*/
