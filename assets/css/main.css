@@ -157,10 +157,42 @@ h2.result_title {
   text-align: center;
 }
 
+#map-view label {
+  display: block;
+  margin: .5em 10em;
+  padding: 1.0em;
+  color: #2fafcf;
+  font-weight: bold;
+  background: #a4e6f3;
+  cursor: pointer;
+  transition: all 0.5s;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+}
+
+#map-view input {
+  display: none;
+}
+
+#map-view #map-div {
+  height: 0;
+  padding: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: 0.5s;
+}
+
+#label1:checked + #map-div {
+  height: auto;
+  padding: 5px;
+  background: #eaeaea;
+  opacity: 1;
+}
+
 #map-div {
   margin: 0 auto;
   padding: .5em;
-  background-color: #006300;
+  background-color: #ccc;
 }
 
 #map-wrapper {
@@ -254,6 +286,9 @@ div#btn {
     padding: .25em .25em
   }
 
+  #map-view label {
+    margin: .5em 5em
+  }
 }
 
 /* Android基準*/
@@ -290,6 +325,10 @@ div#btn {
     font-size: 26px;
     padding: .25em .25em;
   }
+
+  #map-view label {
+    margin: .5em 5em
+  }
 }
 
 /* iPad基準*/
@@ -313,5 +352,9 @@ div#btn {
   p#caution {
     font-size: 28px;
     padding: .25em .25em;
+  }
+
+  #map-view label {
+    margin: .5em 5em
   }
 }
