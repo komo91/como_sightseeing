@@ -13,6 +13,7 @@ body {
   background: url('../img/back2.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
   background-size: cover;
+  background-attachment: fixed;
 }
 
 div {
@@ -257,18 +258,6 @@ div#btn {
 
 /* iPhone5基準 */
 @media screen and (min-width: 320px){
-  #main_bar {
-
-  }
-
-  #map-wrapper {
-
-  }
-
-  #map-canvas {
-
-  }
-
   .main_text {
     font-size: 8px;
   }
@@ -293,22 +282,6 @@ div#btn {
 
 /* Android基準*/
 @media screen and (min-width: 360px) {
-  #main_bar {
-
-  }
-
-  #map-wrapper {
-
-  }
-
-  #map-canvas {
-
-  }
-
-  p#caution {
-
-  }
-
   .main_text {
     font-size: 12px;
   }
@@ -318,7 +291,7 @@ div#btn {
   }
 
   .title {
-    font-size: 20px;
+    font-size: 22px;
   }
 
   p#caution {
@@ -333,20 +306,16 @@ div#btn {
 
 /* iPad基準*/
 @media screen and (min-width: 767px) {
-  #main_bar {
-
-  }
-
-  #map-wrapper {
-
-  }
-
-  #map-canvas {
-
-  }
-
   .main_text {
     font-size: 16px;
+  }
+
+  .message {
+    font-size: 24px;
+  }
+
+  .title {
+    font-size: 26px;
   }
 
   p#caution {
