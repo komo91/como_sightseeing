@@ -40,7 +40,7 @@ document.getElementById('map-canvas').innerHTML = '<div class="message">NowLoadi
 var result = document.getElementById('result');
 result.style.visibility = "hidden";
 
-document.getElementById('sub').style.visibility = "visible";  //test
+//document.getElementById('sub').style.visibility = "visible";  //test
 
 //GeoLocationAPI対応
 if(navigator.geolocation) {
@@ -80,8 +80,8 @@ if(navigator.geolocation) {
         map: syncerWatchPosition.map,
         position: myPosition,
         icon: {
-          url:'assets/img/myspot3.svg',
-          scaledSize: new google.maps.Size(40, 40)
+          url:'assets/img/myspot4.svg',
+          scaledSize: new google.maps.Size(60, 60)
         }
       });
       GasRequest('CheckData');  //spot情報要求
@@ -325,6 +325,15 @@ function Audio() {
 
   var loader = new Loader('assets/mp/1.mp3'); //音声データ元
   loader.loadBuffer();
+}
+
+function map_vis() {
+  var hoge = document.getElementById('map-div');
+  if(hoge.style.visibility == "visible") {
+    hoge.style.visibility = "hidden";
+  } else {
+    hoge.style.visibility = "visible";
+  }
 }
 
 /*

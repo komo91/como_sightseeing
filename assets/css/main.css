@@ -18,6 +18,11 @@ body {
 div {
 }
 
+p {
+  margin: 0 auto;
+  padding: .5em .75em;
+}
+
 h1,
 h2 {
   margin: 0 auto;
@@ -102,16 +107,45 @@ h2 {
   background: #ccc;
 }
 
-h2#gas_q0,
-#gas_q1 {
-  padding: .25em 0 .5em .75em;
-  border-left: 6px solid #abc;
-  border-bottom: 1px solid #abc;
-  margin-right: auto;
+h2.result_title {
+  margin: 0 auto;
+  padding: .25em;
+  color: #ffa;
 }
 
-div.gas_text {
+#gas_img {
+  margin: 0 auto;
+  padding: .75em;
+}
 
+#text0,
+#text1 {
+  position: relative;
+  margin: 2em 0;
+  padding: .5em 1em;
+  border: solid 3px #a6caa3;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.5);
+}
+
+#text0 #gas_q0,
+#text1 #gas_q1 {
+  position: absolute;
+  display: inline-block;
+  top: -13px;
+  left: 10px;
+  padding: 0 9px;
+  line-height: 1;
+  font-size: 19px;
+  background: #fff;
+  color: #a6caa3;
+  font-weight: bold;
+}
+
+#gas_q0 p,
+#gas_q1 p {
+  margin: 0;
+  padding: 0;
 }
 
 
@@ -120,12 +154,13 @@ div.gas_text {
   margin: 0 auto;
   padding: 0;
   background: rgba(119,136,153, 0.5);
+  text-align: center;
 }
 
 #map-div {
   margin: 0 auto;
   padding: .5em;
-  background-color: #006400;
+  background-color: #006300;
 }
 
 #map-wrapper {
@@ -142,6 +177,20 @@ div.gas_text {
   overflow: hidden;
   color: #fff;
 }
+
+.map_btn {
+  position: block;
+  margin: 0 auto;
+  padding: 7px 20px;
+  height: 35px;
+  width: 120px;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  border: solid 1px #2bb6c1;
+  border-radius: 20px;
+}
+
 
 /*----- sub -----*/
 #sub {
@@ -166,7 +215,12 @@ p#caution {
   font-size: 38pt;
   color: #faa;
   text-align: center;
+}
 
+div#btn {
+  position: fixed;
+  margin: 1.5em;
+  padding: 0 .25em;
 }
 
 /* iPhone5基準 */
