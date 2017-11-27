@@ -244,6 +244,7 @@ h2.result_title {
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 p#caution {
