@@ -40,7 +40,7 @@ document.getElementById('map-canvas').innerHTML = '<div class="message">NowLoadi
 var result = document.getElementById('result');
 result.style.visibility = "hidden";
 
-//document.getElementById('sub').style.visibility = "visible";  //test
+document.getElementById('sub').style.visibility = "visible";  //test
 
 //GeoLocationAPI対応
 if(navigator.geolocation) {
@@ -79,6 +79,7 @@ if(navigator.geolocation) {
       syncerWatchPosition.marker = new google.maps.Marker({
         map: syncerWatchPosition.map,
         position: myPosition,
+        animation: google.maps.Animation.DROP,
         icon: {
           url:'assets/img/myspot4.svg',
           scaledSize: new google.maps.Size(60, 60)

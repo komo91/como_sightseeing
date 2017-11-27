@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Lato');
+@import url('https://fonts.googleapis.com/earlyaccess/notosansjp.css');
+
 
 html {
   height: 100%;
@@ -235,6 +237,7 @@ h2.result_title {
   width: 100%;
   height: 100%;
   background: rgba(0,0,0,0.8);
+  background-attachment: fixed;
   visibility: hidden;
   z-index: 1;
   display: flex;
@@ -246,14 +249,18 @@ p#caution {
   margin:  0 auto;
   padding: .5em .5em;
   font-size: 38pt;
-  color: #faa;
+  font-family: 'Noto Sans JP';
+  color: #f33;
   text-align: center;
 }
 
 div#btn {
   position: fixed;
-  margin: 1.5em;
+  margin: 3.5em 0;
   padding: 0 .25em;
+  background-color: #abc;
+  border: solid 1px; #abc;
+  border-radius: 20px;
 }
 
 /* iPhone5基準 */
