@@ -229,7 +229,7 @@ h2.result_title {
 
 /*----- sub -----*/
 #sub {
-  position: absolute;
+  position: fixed;
   margin: 0 auto;
   padding: 0;
   top: 0;
@@ -243,8 +243,6 @@ h2.result_title {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-sizing: border-box;
-  overflow: hidden;
 }
 
 p#caution {
