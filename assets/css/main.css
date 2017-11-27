@@ -258,6 +258,9 @@ div#btn {
   position: fixed;
   margin: 3.5em 0;
   padding: 0 .25em;
+
+}
+.btn {
   background-color: #abc;
   border: solid 1px; #abc;
   border-radius: 20px;
