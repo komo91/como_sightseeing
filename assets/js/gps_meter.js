@@ -8,7 +8,7 @@ var lat, //緯度,
     CheckPoint = [];  //到達判定
 
 var ques = [];
-var text = [];
+var ans = [];
 var v_text = [];
 
 //加速度判定
@@ -18,6 +18,7 @@ var isStep = false,
     step = 0,
     Time_last = 0;
 var timeId;
+var g_spot = false;
 
 //動的情報取得データ
 var syncerWatchPosition = {
@@ -34,7 +35,7 @@ var CheckData ={
 };
 
 //加速度処理
-//window.addEventListener('devicemotion',onDeviceMotion);
+window.addEventListener('devicemotion',onDeviceMotion);
 
 document.getElementById('map-canvas').innerHTML = '<div class="message">NowLoading...</div>';
 var result = document.getElementById('result');
@@ -79,7 +80,6 @@ if(navigator.geolocation) {
       syncerWatchPosition.marker = new google.maps.Marker({
         map: syncerWatchPosition.map,
         position: myPosition,
-        animation: google.maps.Animation.DROP,
         icon: {
           url:'assets/img/myspot4.svg',
           scaledSize: new google.maps.Size(60, 60)
@@ -89,6 +89,7 @@ if(navigator.geolocation) {
       warning_view('sub');  //警告表示描画
     } else {
       syncerWatchPosition.map.setCenter(myPosition);  //地図中心変更
+      syncerWatchPosition.marker.setPosition(myPosition);
       LogPost(myPosition);
     }
   }
@@ -156,7 +157,7 @@ function decision() {
   for(var j = 0; j < spotData.length; j++) {
     //現在地から目的地点までの距離
     var distance = google.maps.geometry.spherical.computeDistanceBetween(myPosition,marker[j].position);
-    if(CirclePoint[j].radius > distance && CheckPoint[j]==false) {  //範囲円に現在地点に入った かつ 一度も到達してない場合
+    if(CirclePoint[j].radius > distance && !CheckPoint[j]) {  //範囲円に現在地点に入った かつ 一度も到達してない場合
       GasRequest(spotData[j][0]); //スポットごとの外部サイトアクセス
       LogPost(spotData[j][0]);  //スポット到達ログ送信
       CheckPoint[j] = true; //一度到達した判定
@@ -227,15 +228,15 @@ function reflect_info(json,i) {
   document.getElementById('gas_url').appendChild(a);
 
   for(var i = 0; i < json.response[1].length; i++) {
-    ques[i] = document.createElement('h2');
-    text[i] = document.createElement('p');
-    ques[i].id = "gas_q" + i;
-    text[i].class = "gas_text";
-    ques[i].textContent = json.response[1][i];
-    text[i].textContent = json.response[2][i];
-    document.getElementById('text' + i).appendChild(ques[i]);
-    document.getElementById('gas_q' + i).parentNode.insertBefore(text[i],ques[i].nextSibling);
-  }
+      ques[i] = document.createElement('h2');
+      ans[i] = document.createElement('p');
+      ques[i].id = "gas_q" + i;
+      ans[i].class = "gas_text";
+      ques[i].textContent = json.response[1][i];
+      ans[i].textContent = json.response[2][i];
+      document.getElementById('text' + i).appendChild(ques[i]);
+      document.getElementById('gas_q' + i).parentNode.insertBefore(ans[i],ques[i].nextSibling);
+    }
 
   //画像反映
   if(json.response[3]) {
