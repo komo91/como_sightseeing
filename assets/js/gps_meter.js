@@ -40,7 +40,7 @@ document.getElementById('map-canvas').innerHTML = '<div class="message">NowLoadi
 var result = document.getElementById('result');
 result.style.visibility = "hidden";
 
-document.getElementById('sub').style.visibility = "visible";  //test
+//document.getElementById('sub').style.visibility = "visible";  //test
 
 //GeoLocationAPI対応
 if(navigator.geolocation) {
@@ -148,7 +148,7 @@ function inputMarker() {
     };
 
     CheckPoint[i] = false;  //未到達判定
-    //var Cir = new google.maps.Circle(CirclePoint[i]); //範囲円表示
+    var Cir = new google.maps.Circle(CirclePoint[i]); //範囲円表示
     //syncerWatchPosition.map.fitBounds(Cir.getBounds()); //地図ビューポート修正
   }
 }
@@ -213,7 +213,7 @@ function receiveJson(json) {
     }
   }
   if(!json.response){
-    //document.getElementById('gas_result').innerHTML = json.error;
+    document.getElementById('gas_result').innerHTML = json.error;
   }
 }
 
