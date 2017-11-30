@@ -6,7 +6,7 @@ var lat, //緯度,
     marker = [],  //登録位置情報
     CirclePoint = [], //位置範囲設定
     CheckPoint = [];  //到達判定
-//hoge
+
 var ques = [];
 var ans = [];
 var v_text = [];
@@ -412,8 +412,9 @@ function onDeviceMotion(e) {
     if(acc < GRAVITY_MIN) {
       step++;
       timerId = setTimeout(exhoge,1000);
+      isStep = false;
     }
-    isStep = false;
+
   } else {
     if(acc > GRAVITY_MAX) {
       isStep = true;
