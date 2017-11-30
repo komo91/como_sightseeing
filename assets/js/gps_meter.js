@@ -67,7 +67,7 @@ if(navigator.geolocation) {
         lat: lat,
         lng: lng
       });
-      //LogPost(myPosition);
+      LogPost(myPosition);
 
     if(syncerWatchPosition.map == null) { //新規Map作成
       syncerWatchPosition.map = new google.maps.Map(document.getElementById('map-canvas'), {
@@ -89,10 +89,8 @@ if(navigator.geolocation) {
       warning_view('sub');  //警告表示描画
     } else {
       syncerWatchPosition.map.setCenter(myPosition);  //地図中心変更
-      //LogPost(myPosition);
+      LogPost(myPosition);
     }
-
-
   }
 
   //現在地測定失敗の場合
@@ -160,9 +158,8 @@ function decision() {
     var distance = google.maps.geometry.spherical.computeDistanceBetween(myPosition,marker[j].position);
     if(CirclePoint[j].radius > distance && CheckPoint[j]==false) {  //範囲円に現在地点に入った かつ 一度も到達してない場合
       GasRequest(spotData[j][0]); //スポットごとの外部サイトアクセス
-      //LogPost(spotData[j][0]);  //スポット到達ログ送信
+      LogPost(spotData[j][0]);  //スポット到達ログ送信
       CheckPoint[j] = true; //一度到達した判定
-
     }
   }
 }
@@ -190,7 +187,7 @@ function GasRequest(num) {
   var base = 'https://script.google.com/macros/s/AKfycbw8gy8khaOVo2PBOnR6BasMOC7pquNXj3nOTggRNYLb-psD2xnQ/exec';
   script.src = base + '?callback=receiveJson&action=' + num;
   document.body.appendChild(script);  //bodyにscript追加
-  console.log(script.src);
+  //console.log(script.src);
 }
 
 //GASから返った値を表示させる
@@ -245,6 +242,54 @@ function reflect_info(json,i) {
     var b = document.createElement('img');
     b.src = json.response[3];
     document.getElementById('gas_img').appendChild(b);
+  }
+}
+
+//GASに指定値をpost
+function LogPost(text) {
+  var script = document.createElement('script');
+  var base = 'https://script.google.com/macros/s/AKfycbyABjS6CnXqSuqoYTFga7_mLjI2Z_rMjseJZ_RS3nXVy90u920/exec';
+  var user = navicheck();
+  var browser = browserCheck();
+  script.src = base + '?log=' + encodeURI(text) + '&user=' + user + '&browser=' + browser;
+  document.body.appendChild(script);
+}
+
+//端末情報
+function navicheck() {
+  var ua = window.navigator.userAgent.toLowerCase();
+  console.log(ua);
+  if(ua.indexOf('iphone') != -1) {
+    return 'iPhone';
+  } else if(ua.indexOf('ipad') != -1) {
+    return 'iPad';
+  } else if(ua.indexOf('android') != -1) {
+    if(ua.indexOf('moblie') != -1) {
+      return 'android_smart';
+    } else {
+      return 'android_tab';
+    }
+  }
+}
+
+//ブラウザ情報
+function browserCheck() {
+  var ua = window.navigator.userAgent.toLowerCase();
+
+  if(ua.indexOf('msie') != -1 || ua.indexOf('trident') != -1) {
+    return 'IE';
+  } else if(ua.indexOf('edge') != -1) {
+    return 'Edge';
+  } else if(ua.indexOf('chrome') != -1) {
+    return 'chrome';
+  } else if(ua.indexOf('safari') != -1) {
+    return 'safari';
+  } else if(ua.indexOf('firefox') != -1) {
+    return 'Firefox';
+  } else if(ua.indexOf('opera') != -1) {
+    return 'Opera';
+  } else {
+    return 'other';
   }
 }
 
