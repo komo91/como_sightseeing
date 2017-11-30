@@ -249,14 +249,18 @@ function reflect_info(json,i) {
       console.log('hoge');
     }
   }
-  g_spot = true;
-
   //画像反映
-  if(json.response[3]) {
+  if(!g_spot) {
     var b = document.createElement('img');
     b.src = json.response[3];
+    b.id = 'hoge_img';
     document.getElementById('gas_img').appendChild(b);
+  } else {
+    document.getElementById('hoge_img').src = json.response[3];
   }
+
+
+  g_spot = true;
 }
 
 //GASに指定値をpost
