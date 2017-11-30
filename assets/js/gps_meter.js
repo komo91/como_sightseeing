@@ -35,7 +35,7 @@ var CheckData ={
 };
 
 //加速度処理
-//window.addEventListener('devicemotion',onDeviceMotion);
+window.addEventListener('devicemotion',onDeviceMotion);
 
 document.getElementById('map-canvas').innerHTML = '<div class="message">NowLoading...</div>';
 var result = document.getElementById('result');
@@ -211,7 +211,7 @@ function receiveJson(json) {
     }
   }
   if(!json.response){
-    document.getElementById('gas_result').innerHTML = json.error;
+    //document.getElementById('gas_result').innerHTML = json.error;
   }
 }
 
@@ -219,24 +219,37 @@ function reflect_info(json,i) {
   result.style.visibility = "visible";
 
   //URL反映
-  var a = document.createElement('a');
-  a.href = spotData[i][5];
-  a.className = "url_button";
-  a.target = "_blank";
-  var str = document.createTextNode(spotData[i][4] + 'の関連サイトへ');
-  a.appendChild(str);
-  document.getElementById('gas_url').appendChild(a);
+  if(!g_spot) {
+    var a = document.createElement('a');
+    a.href = spotData[i][5];
+    a.className = "url_button";
+    a.target = "_blank";
+    var str = document.createTextNode(spotData[i][4] + 'の関連サイトへ');
+    a.appendChild(str);
+    document.getElementById('gas_url').appendChild(a);
+  } else {
+    document.getElementsByClassName('url_button')[0].href = spotData[i][5];
+    document.getElementsByClassName('url_button')[0].innerHTML = spotData[i][4] + 'の関連サイトへ';
+  }
+
 
   for(var i = 0; i < json.response[1].length; i++) {
+    if(!g_spot){
       ques[i] = document.createElement('h2');
       ans[i] = document.createElement('p');
       ques[i].id = "gas_q" + i;
-      ans[i].class = "gas_text";
+      ans[i].className = "gas_text";
       ques[i].textContent = json.response[1][i];
       ans[i].textContent = json.response[2][i];
       document.getElementById('text' + i).appendChild(ques[i]);
       document.getElementById('gas_q' + i).parentNode.insertBefore(ans[i],ques[i].nextSibling);
+    } else {
+      document.getElementById('gas_q' + i).innerHTML = json.response[1][i];
+      document.getElementsByClassName('gas_text')[i].innerHTML = json.response[2][i];
+      console.log('hoge');
     }
+  }
+  g_spot = true;
 
   //画像反映
   if(json.response[3]) {
@@ -402,7 +415,7 @@ function onDeviceMotion(e) {
       isStep = true;
     }
   }
-  document.getElementById('hoge').innerHTML = step + "歩";
+  //document.getElementById('hoge').innerHTML = step + "歩";
 }
 
 function exhoge() {
