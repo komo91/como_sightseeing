@@ -411,7 +411,7 @@ function onDeviceMotion(e) {
     document.getElementById('sub').style.visibility = "visible";
     if(acc < GRAVITY_MIN) {
       step++;
-      timerId = setTimeout(exhoge,1000);
+      timerId = setTimeout(exhoge,2000);
       isStep = false;
     }
 
