@@ -337,7 +337,7 @@ function map_vis() {
   }
 }
 
-/*
+
 //歩数測定・歩きスマホ判定
 function onDeviceMotion(e) {
   e.preventDefault();
@@ -345,10 +345,10 @@ function onDeviceMotion(e) {
   var acc = Math.sqrt(ag.x*ag.x + ag.y*ag.y + ag.z*ag.z);
 
   if(isStep) {
-    //document.getElementById('sub').style.visibility = "visible";
+    document.getElementById('sub').style.visibility = "visible";
     if(acc < GRAVITY_MIN) {
       step++;
-      walk_ref();
+      timerId = setTimeout(exhoge,1000);
     }
     isStep = false;
   } else {
@@ -356,17 +356,12 @@ function onDeviceMotion(e) {
       isStep = true;
     }
   }
-  //document.getElementById('hoge').innerHTML = step + "歩";
-}
-
-  //歩行状態ではないかつ歩行停止1秒後
-function walk_ref() {
-  document.getElementById('sub').style.visibility = "visible";
-  timerId = setTimeout(1000);
+  document.getElementById('hoge').innerHTML = step + "歩";
 }
 
 function exhoge() {
+  (!isStep) {
     document.getElementById('sub').style.visibility = "hidden";
     clearTimeout(timerId);
+  }
 }
-*/
