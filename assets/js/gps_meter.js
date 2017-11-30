@@ -35,7 +35,7 @@ var CheckData ={
 };
 
 //加速度処理
-window.addEventListener('devicemotion',onDeviceMotion);
+//window.addEventListener('devicemotion',onDeviceMotion);
 
 document.getElementById('map-canvas').innerHTML = '<div class="message">NowLoading...</div>';
 var result = document.getElementById('result');
@@ -394,7 +394,7 @@ function onDeviceMotion(e) {
     document.getElementById('sub').style.visibility = "visible";
     if(acc < GRAVITY_MIN) {
       step++;
-      timerId = setTimeout(exhoge,500);
+      timerId = setTimeout(exhoge,1000);
     }
     isStep = false;
   } else {
@@ -408,6 +408,6 @@ function onDeviceMotion(e) {
 function exhoge() {
   if(!isStep) {
     document.getElementById('sub').style.visibility = "hidden";
-    //clearTimeout(timerId);
+    clearTimeout(timerId);
   }
 }
