@@ -6,7 +6,7 @@ var lat, //緯度,
     marker = [],  //登録位置情報
     CirclePoint = [], //位置範囲設定
     CheckPoint = [];  //到達判定
-
+//hoge
 var ques = [];
 var ans = [];
 var v_text = [];
