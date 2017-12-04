@@ -90,6 +90,7 @@ if(navigator.geolocation) {
     } else {
       syncerWatchPosition.map.setCenter(myPosition);  //地図中心変更
       syncerWatchPosition.marker.setPosition(myPosition);
+      decision();
       LogPost(myPosition);
     }
   }
@@ -246,7 +247,6 @@ function reflect_info(json,i) {
     } else {
       document.getElementById('gas_q' + i).innerHTML = json.response[1][i];
       document.getElementsByClassName('gas_text')[i].innerHTML = json.response[2][i];
-      console.log('hoge');
     }
   }
   //画像反映
@@ -409,6 +409,7 @@ function onDeviceMotion(e) {
 
   if(isStep) {
     document.getElementById('sub').style.visibility = "visible";
+    document.getElementById('result').style.visibility = "hidden";
     if(acc < GRAVITY_MIN) {
       step++;
       timerId = setTimeout(exhoge,2000);
@@ -426,6 +427,7 @@ function onDeviceMotion(e) {
 function exhoge() {
   if(!isStep) {
     document.getElementById('sub').style.visibility = "hidden";
+    document.getElementById('result').style.visibility = "visible";
     clearTimeout(timerId);
   }
 }
