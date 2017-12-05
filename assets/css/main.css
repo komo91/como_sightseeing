@@ -266,6 +266,31 @@ div#btn {
   border-radius: 20px;
 }
 
+@media screen and (min-width: 0px) {
+  .main_text {
+    font-size: 8px;
+  }
+
+  .message {
+    font-size: 12px;
+  }
+
+  .title {
+    font-size: 14px;
+  }
+
+  p#caution {
+    font-size: 24px;
+    padding: .25em .25em
+  }
+
+  #map-view label {
+    margin: .5em 5em
+  }
+}
+
+}
+
 /* iPhone5基準 */
 @media screen and (min-width: 320px){
   .main_text {
