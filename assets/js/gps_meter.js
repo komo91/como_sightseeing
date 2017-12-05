@@ -258,8 +258,6 @@ function reflect_info(json,i) {
   } else {
     document.getElementById('hoge_img').src = json.response[3];
   }
-
-
   g_spot = true;
 }
 
@@ -409,7 +407,6 @@ function onDeviceMotion(e) {
 
   if(isStep) {
     document.getElementById('sub').style.visibility = "visible";
-    document.getElementById('result').style.visibility = "hidden";
     if(acc < GRAVITY_MIN) {
       step++;
       timerId = setTimeout(exhoge,2000);
@@ -427,7 +424,6 @@ function onDeviceMotion(e) {
 function exhoge() {
   if(!isStep) {
     document.getElementById('sub').style.visibility = "hidden";
-    document.getElementById('result').style.visibility = "visible";
     clearTimeout(timerId);
   }
 }
