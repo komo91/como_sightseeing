@@ -225,7 +225,7 @@ function reflect_info(json,i) {
     a.href = spotData[i][5];
     a.className = "url_button";
     a.target = "_blank";
-    var str = document.createTextNode('高尾山口駅の関連サイトへ');
+    var str = document.createTextNode(spotData[i][4] + 'の関連サイトへ');
     a.appendChild(str);
     document.getElementById('gas_url').appendChild(a);
   } else {
