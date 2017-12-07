@@ -15,7 +15,6 @@ var v_text = [];
 var GRAVITY_MIN = 9.8;
 var GRAVITY_MAX = 15.0;
 var isStep = false,
-    step = 0,
     Time_last = 0;
 var timeId;
 var g_spot = false;
@@ -408,9 +407,7 @@ function onDeviceMotion(e) {
   if(isStep) {
     document.getElementById('sub').style.visibility = "visible";
     if(acc < GRAVITY_MIN) {
-      step++;
       timerId = setTimeout(exhoge,2000);
-      isStep = false;
     }
 
   } else {
@@ -426,4 +423,5 @@ function exhoge() {
     document.getElementById('sub').style.visibility = "hidden";
     clearTimeout(timerId);
   }
+  isStep = false;
 }
