@@ -13,7 +13,7 @@ var v_text = [];
 
 //加速度判定
 var GRAVITY_MIN = 9.8;
-var GRAVITY_MAX = 12.0;
+var GRAVITY_MAX = 15.0;
 var isStep = false,
     step = 0,
     Time_last = 0;
