@@ -270,49 +270,6 @@ function LogPost(text) {
   document.body.appendChild(script);
 }
 
-//端末情報
-function navicheck() {
-  var ua = window.navigator.userAgent.toLowerCase();
-  console.log(ua);
-  if(ua.indexOf('iphone') != -1) {
-    return 'iPhone';
-  } else if(ua.indexOf('ipad') != -1) {
-    return 'iPad';
-  } else if(ua.indexOf('android') != -1) {
-    if(ua.indexOf('moblie') != -1) {
-      return 'android_smart';
-    } else {
-      return 'android_tab';
-    }
-  }
-}
-
-//ブラウザ情報
-function browserCheck() {
-  var ua = window.navigator.userAgent.toLowerCase();
-
-  if(ua.indexOf('msie') != -1 || ua.indexOf('trident') != -1) {
-    return 'IE';
-  } else if(ua.indexOf('edge') != -1) {
-    return 'Edge';
-  } else if(ua.indexOf('chrome') != -1) {
-    return 'chrome';
-  } else if(ua.indexOf('safari') != -1) {
-    return 'safari';
-  } else if(ua.indexOf('firefox') != -1) {
-    return 'Firefox';
-  } else if(ua.indexOf('opera') != -1) {
-    return 'Opera';
-  } else {
-    return 'other';
-  }
-}
-
-//加速度計算
-function obj2NumberFix(obj,fix_deg) {
-  return Number(obj).toFixed(fix_deg);
-}
-
 //レイヤー作成
 function warning_view(id) {
   var tar = document.getElementById(id);
@@ -408,8 +365,8 @@ function onDeviceMotion(e) {
     document.getElementById('sub').style.visibility = "visible";
     if(acc < GRAVITY_MIN) {
       timerId = setTimeout(exhoge,2000);
+      isStep = false;
     }
-
   } else {
     if(acc > GRAVITY_MAX) {
       isStep = true;
@@ -423,5 +380,4 @@ function exhoge() {
     document.getElementById('sub').style.visibility = "hidden";
     clearTimeout(timerId);
   }
-  isStep = false;
 }
