@@ -67,7 +67,7 @@ if(navigator.geolocation) {
         lat: lat,
         lng: lng
       });
-      LogPost(myPosition);
+      //LogPost(myPosition);
 
     if(syncerWatchPosition.map == null) { //新規Map作成
       syncerWatchPosition.map = new google.maps.Map(document.getElementById('map-canvas'), {
@@ -90,7 +90,7 @@ if(navigator.geolocation) {
       syncerWatchPosition.map.setCenter(myPosition);  //地図中心変更
       syncerWatchPosition.marker.setPosition(myPosition);
       decision();
-      LogPost(myPosition);
+      //LogPost(myPosition);
     }
   }
 
@@ -159,7 +159,7 @@ function decision() {
     var distance = google.maps.geometry.spherical.computeDistanceBetween(myPosition,marker[j].position);
     if(CirclePoint[j].radius > distance && !CheckPoint[j]) {  //範囲円に現在地点に入った かつ 一度も到達してない場合
       GasRequest(spotData[j][0]); //スポットごとの外部サイトアクセス
-      LogPost(spotData[j][0]);  //スポット到達ログ送信
+      //LogPost(spotData[j][0]);  //スポット到達ログ送信
       CheckPoint[j] = true; //一度到達した判定
     }
   }
@@ -211,7 +211,7 @@ function receiveJson(json) {
     }
   }
   if(!json.response){
-    //document.getElementById('gas_result').innerHTML = json.error;
+    document.getElementById('message').innerHTML = json.error;
   }
 }
 
@@ -258,16 +258,6 @@ function reflect_info(json,i) {
     document.getElementById('hoge_img').src = json.response[3];
   }
   g_spot = true;
-}
-
-//GASに指定値をpost
-function LogPost(text) {
-  var script = document.createElement('script');
-  var base = 'https://script.google.com/macros/s/AKfycbyABjS6CnXqSuqoYTFga7_mLjI2Z_rMjseJZ_RS3nXVy90u920/exec';
-  var user = navicheck();
-  var browser = browserCheck();
-  script.src = base + '?log=' + encodeURI(text) + '&user=' + user + '&browser=' + browser;
-  document.body.appendChild(script);
 }
 
 //レイヤー作成
