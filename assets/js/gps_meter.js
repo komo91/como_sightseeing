@@ -248,6 +248,10 @@ function reflect_info(json,i) {
       document.getElementsByClassName('gas_text')[i].innerHTML = json.response[2][i];
     }
   }
+  if(!json.response[1][4]) {
+    var element = document.getElementById('text' + i)
+    element.parentNode.removeChild(element);
+  }
   //画像反映
   if(!g_spot) {
     var b = document.createElement('img');

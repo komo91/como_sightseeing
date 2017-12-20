@@ -122,7 +122,9 @@ h2.result_title {
 }
 
 #text0,
-#text1 {
+#text1,
+#text2,
+#text3 {
   position: relative;
   margin: 2em 0;
   padding: .5em 1em;
@@ -132,7 +134,9 @@ h2.result_title {
 }
 
 #text0 #gas_q0,
-#text1 #gas_q1 {
+#text1 #gas_q1,
+#text2 #gas_q2,
+#text3 #gas_q3 {
   position: absolute;
   display: inline-block;
   top: -13px;
@@ -146,7 +150,9 @@ h2.result_title {
 }
 
 #gas_q0 p,
-#gas_q1 p {
+#gas_q1 p,
+#gas_q2 p,
+#gas_q3 p {
   margin: 0;
   padding: 0;
 }
