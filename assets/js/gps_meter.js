@@ -224,12 +224,12 @@ function reflect_info(json,i) {
     a.href = spotData[i][5];
     a.className = "url_button";
     a.target = "_blank";
-    var str = document.createTextNode(spotData[i][4] + 'の関連サイトへ');
+    var str = document.createTextNode('高尾山口駅の関連サイトへ');
     a.appendChild(str);
     document.getElementById('gas_url').appendChild(a);
   } else {
     document.getElementsByClassName('url_button')[0].href = spotData[i][5];
-    document.getElementsByClassName('url_button')[0].innerHTML = spotData[i][4] + 'の関連サイトへ';
+    document.getElementsByClassName('url_button')[0].innerHTML = '高尾山口駅の関連サイトへ';
   }
 
 
@@ -370,7 +370,6 @@ function onDeviceMotion(e) {
       isStep = true;
     }
   }
-  //document.getElementById('hoge').innerHTML = step + "歩";
 }
 
 function exhoge() {
