@@ -229,7 +229,7 @@ function reflect_info(json,i) {
     document.getElementById('gas_url').appendChild(a);
   } else {
     document.getElementsByClassName('url_button')[0].href = spotData[i][5];
-    document.getElementsByClassName('url_button')[0].innerHTML = spotData[i][4]'の関連サイトへ';
+    document.getElementsByClassName('url_button')[0].innerHTML = spotData[i][4] + 'の関連サイトへ';
   }
 
 
